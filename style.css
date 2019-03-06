@@ -11,12 +11,12 @@ html {
 body{
     direction: ltr;
     text-align: left;
-    font-family: 'Laila', serif;
+    font-family: 'Gothic A1', sans-serif;
     background-image: url("ricky.jpg");
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
-    background-position: right center;
+    background-position: center center;
     background-size: cover;
     background-attachment: fixed;
     color: #ffffff;
@@ -26,16 +26,21 @@ body{
   background-color: rgba(110,11,12,0.2);
   background-repeat: repeat-y;
   background-size: cover;
-  min-height: 200vh;
+  min-height: 120vh;
   width: 100vw;
   top: 0;
 }
 
 #date {
   margin: 0.5rem;
-  font-family: 'Laila', serif;
+  font-family: 'Gothic A1', sans-serif;
   font-size: 1.2rem;
+  color: #CCFFF2;
   
+}
+
+h4 {
+  font-size: 1.2rem;
 }
 
 .hide {
@@ -1246,7 +1251,7 @@ body {
   height: 100%;
   margin-right: -250px;
   overflow-y: auto;
-  background: rgba(232,232,232,0.9);  
+  background: rgba(82,12,4,0.9);  
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -1288,14 +1293,14 @@ body {
 .sidebar-nav li a {
   display: block;
   text-decoration: none;
-  color: #2D2821;
+  color: #E1E4E8;
   margin-left: 0.5rem;  
 }
 
 .sidebar-nav li a:hover {
   text-decoration: none;
-  color: #fff;
-  background: rgba(73,73,73,0.5);
+  color: #424444;
+  background: rgba(157,197,187,0.8);
 }
 
 .sidebar-nav li a:active, .sidebar-nav li a:focus {
@@ -1309,11 +1314,11 @@ body {
 }
 
 .sidebar-nav>.sidebar-brand a {
-  color: #2D2821;
+  color: #E1E4E8;
 }
 
 .sidebar-nav>.sidebar-brand a:hover {
-  color: rgba(73,73,73,0.5);
+  color: #9DC5BB;
   background: none;
 }
 
@@ -1348,7 +1353,7 @@ body {
 }
 
 .links:hover {
-  color: #F2DCE3;
+  color: #CCFFF2;
 }
     
 .links:before {
@@ -1358,7 +1363,7 @@ body {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #000;
+  background-color: #FFF7FC;
   visibility: hidden;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
@@ -1374,6 +1379,7 @@ body {
 
 .links:hover {
   text-decoration: none !important;
+  color: #FFF7FC;
 }
 
 .form-control {
@@ -1382,8 +1388,8 @@ body {
     padding: .375rem .75rem;
     font-size: 0.8rem;
     line-height: 1.7;
-    color: #495057;
-    background-color: #fff;
+    color: #FCFFFE;
+    background-color: rgba(66,68,68,0.2);
     border: 1px solid #ced4da;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
@@ -1392,6 +1398,9 @@ body {
 }
 .form-control:focus {
    border-color: #FFD9CE !important;
+   background-color: rgba(66,68,68,0.2);
+   color: #FCFFFE;
+   font-size: 1rem;
 } 
 
 .small-form {
@@ -1434,9 +1443,109 @@ body {
   border-radius: 4px;
   text-align: center;
   font: 1.4rem 'DIGITAL', Helvetica;
-  background: linear-gradient(90deg, #ced4da, #BAC0C6);
+  background: linear-gradient(90deg, #9DC5BB, #424444);
 }
 
 .pt-6 {
   padding-top: 4rem;
+}
+
+.app {
+  max-width: 250px;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  border-radius: 20px;
+  background: var(--color-app);
+  box-shadow: 0 0 15px -5px var(--color-bg), -4px 2px 10px var(--color-bg);
+}
+
+/* for the timer, add plenty of whitespace atop and below the headings */
+.app__timer {
+  padding: 5rem 1rem;
+  text-align: center;
+  font-family: var(--font-timer);
+  line-height: 2;
+  background: var(--color-app);
+  /* position relative to absolute position the pseudo element */
+  position: relative;
+}
+/* through a pseudo element add a ring around the headings */
+.app__timer:before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 75%;
+  border: 1px solid var(--color-bg-l);
+  border-radius: 50%;
+  transition: border 0.2s ease-out;
+}
+/* with a class of active, show the ring with more intensity */
+.app__timer.active:before {
+  border: 1px solid var(--color-bg);
+}
+
+/* reduce the importance of the h3 element in comparison to the main h1 heading */
+.app__timer h1 {
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+.app__timer h3 {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+/* for the options, display them in a single column, atop one another
+cap the height to allow for vertical scroll
+! remember to set flex-shrink to 0 for the flex items
+*/
+.app__options {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 200px;
+  /* the margin allows to show the scrollbar also within the boundaries of the main container */
+  margin: 0.5rem;
+}
+
+/* minor stylistic choices regarding the scrollbar */
+.app__options::-webkit-scrollbar {
+  width: 0.15rem;
+}
+.app__options::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px var(--color-bg-l);
+}
+.app__options::-webkit-scrollbar-thumb {
+  background: var(--color-bg);
+  border-radius: 5px;
+}
+
+/* for the input element and the buttons, add the same property value pairs to style them as rather straightforward strings of text */
+.app__options form input,
+.app__options button {
+  flex-shrink: 0;
+  text-align: left;
+  background: none;
+  border: none;
+  font-family: inherit;
+  color: inherit;
+  padding: 0.2rem 0.5rem;
+  border-bottom: 1px solid var(--color-bg-l);
+  transition: all 0.2s ease-out;
+}
+/* on hover slightly show a colored background */
+.app__options form input:hover,
+.app__options button:hover {
+  background: var(--color-highlight);
+}
+
+/* for the input individually, stretch its width to cover the entirety of the viewport and apply the same color of the text to the placeholder as well */
+.app__options form input {
+  width: 100%;
+}
+.app__options form input::placeholder {
+  color: inherit;
 }
