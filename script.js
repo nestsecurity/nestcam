@@ -72,6 +72,12 @@ let in2 = $("#in2").val();
 let ts = $("#ts").val();
 let config = $("#configuration").val();
 let resolution = $("#resolution").val();
+let device = $("#device option:selected").text();
+let devices = $("#device option:selected").val();
+let battery = $("#battery").val();
+let voc = $("#voc").val();
+let vin = $("#vin").val();
+let lin = $("#lin").val();
 let ft = $("#ft").val();
 let wiring = [];
 let color = [];    
@@ -85,9 +91,19 @@ $("input[name='color']").each(function(){
     if(eachcolor.length != ''){
        let colorarray = color.push($(this).val());
     }       
-});    
+});
+
+if(devices == 2|| devices == 3 &&   battery === null){
    $(".case").after("<textarea class='form-control mb-3' rows='30' id='submit-case'></textarea>");
-   $("#submit-case").val("\n===== CUSTOMER INFO ===== \n Contact Name: " + fname + "\n Contact Phone: " + pnumber + "\n Contact E-mail: " + eadd + "\n Case Number: " + pcase + "\n\n===== CUSTOMER STATEMENT=====\n" + issue + "\n\n===== TIMELINE =====\n•Installed on: " + in1 + "\n•Issued since: " + in2 + "\n\n===== CONFIGURATION =====\n"+ config +"\n\n=====TROUBLESHOOTING =====\n" + ts + "\n\n ===== RESOLUTION =====\n" + "\n" + resolution);
+   $("#submit-case").val("\n===== CUSTOMER INFO ===== \n Contact Name: " + fname + "\n Contact Phone: " + pnumber + "\n Contact E-mail: " + eadd + "\n Case Number: " + pcase + "\n\n===== CUSTOMER STATEMENT=====\n" + issue + "\n\n===== TIMELINE =====\n•Installed on: " + in1 + "\n•Issued since: " + in2 + "\n\n===== CONFIGURATION =====\n Device: "+ device + "\n\nWiring and Color: \n" + wiring.join(", ") + "\n" + color.join(", ") + "\n\nPower Reading: \n" + "Battery: " + battery + "\nVOC: " + voc + "\nVIN: " + vin + "\nLIN " + lin + "\n" + config +"\n\n=====TROUBLESHOOTING =====\n" + ts + "\n\n ===== RESOLUTION =====\n" + "\n" + resolution);
+} else if(devices == 4) {
+    $(".case").after("<textarea class='form-control mb-3' rows='30' id='submit-case'></textarea>");
+   $("#submit-case").val("\n===== CUSTOMER INFO ===== \n Contact Name: " + fname + "\n Contact Phone: " + pnumber + "\n Contact E-mail: " + eadd + "\n Case Number: " + pcase + "\n Device: " + device + "\n\n===== CUSTOMER STATEMENT=====\n" + issue + "\n\n===== TIMELINE =====\n•Installed on: " + in1 + "\n•Issued since: " + in2 +"\n\n=====TROUBLESHOOTING =====\n" + ts + "\n\n ===== RESOLUTION =====\n" + "\n" + resolution);
+} else {
+    $(".case").after("<textarea class='form-control mb-3' rows='30' id='submit-case'></textarea>");
+   $("#submit-case").val("\n===== CUSTOMER INFO ===== \n Contact Name: " + fname + "\n Contact Phone: " + pnumber + "\n Contact E-mail: " + eadd + "\n Case Number: " + pcase + "\n\n===== CUSTOMER STATEMENT=====\n" + issue + "\n\n===== TIMELINE =====\n•Installed on: " + in1 + "\n•Issued since: " + in2 +"\n\n=====TROUBLESHOOTING =====\n" + ts + "\n\n ===== RESOLUTION =====\n" + "\n" + resolution);
+} 
+
 });
 
 $("#reset-btn").click(function(){ 
@@ -95,6 +111,91 @@ $("#reset-btn").click(function(){
   $('#myForm')[0].reset();
   $("#submit-case").remove();
   $("#copy-btn").hide();  
+});
+
+$("#battery").focus(function(){
+   $(this).val("V");
+});
+
+$("#voc").focus(function(){
+   $(this).val("V");
+});
+
+$("#vin").focus(function(){
+   $(this).val("V");
+});
+
+$("#lin").focus(function(){
+   $(this).val("mA");
+});
+
+$(document).ready(function () {
+    $('input[name="wiring"]').on('click',function () {
+        if ($('#y1').is(':checked')) {
+          $("#input-y1").val("Yellow");  
+        } else {
+          $("#input-y1").val("");
+        } 
+        if ($('#y2').is(':checked')) {
+          $("#input-y2").val("Yellow");
+        } else {
+          $("#input-y2").val("");
+        }
+        
+        if ($('#g').is(':checked')) {
+          $("#input-g").val("Green");
+        } else {
+          $("#input-g").val("");
+        } 
+        
+        if ($('#ob').is(':checked')) {
+          $("#input-ob").val("Orange");
+        } else {
+          $("#input-ob").val("");
+        }
+        
+        if ($('#rc').is(':checked')) {
+          $("#input-rc").val("Red");
+        } else {
+          $("#input-rc").val("");
+        } 
+        
+        if ($('#w1').is(':checked')) {
+          $("#input-w1").val("White");
+        } else {
+          $("#input-w1").val("");
+        }
+        
+        if ($('#w2').is(':checked')) {
+          $("#input-w2").val("Brown");
+        } else {
+          $("#input-w2").val("");
+        }
+        
+        if ($('#g').is(':checked')) {
+          $("#input-g").val("Green");
+        } else {
+          $("#input-g").val("");
+        }
+        
+        if ($('#c').is(':checked')) {
+          $("#input-c").val("Blue");
+        } else {
+          $("#input-c").val("");
+        }
+        
+        if ($('#star').is(':checked')) {
+          $("#input-star").val("Brown");
+        } else {
+          $("#input-star").val("");
+        }
+        
+        if ($('#rh').is(':checked')) {
+          $("#input-rh").val("Red");
+        } else {
+          $("#input-rh").val("");
+        }
+    });
 });
     
 $("#ts").focus(function() {
@@ -291,3 +392,4 @@ function handleSubmit(e) {
 
 // listen for the submit event on the entire form
 form.addEventListener('submit', handleSubmit);
+          
