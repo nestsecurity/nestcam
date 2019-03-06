@@ -1403,14 +1403,18 @@ body {
    font-size: 1rem;
 } 
 
+.form-control::placeholder{
+  color: #FCFFFE;
+}
+
 .small-form {
     display: block;
     width: 10rem;
     height: 1.5rem;
     font-size: 0.8rem;
     line-height: 1.7;
-    color: #495057;
-    background-color: #fff;
+    color: #FCFFFE;
+    background-color: rgba(66,68,68,0.2);
     border: 1px solid #ced4da;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
@@ -1422,8 +1426,8 @@ body {
     height: 1.5rem;
     font-size: 0.8rem;
     line-height: 1.7;
-    color: #495057;
-    background-color: #fff;
+    color: #FCFFFE;
+    background-color: rgba(66,68,68,0.2);
     border: 1px solid #ced4da;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
